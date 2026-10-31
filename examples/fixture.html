@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AccessJourney fixture</title>
+  <style>
+    body { font:18px/1.6 system-ui; max-width:800px; margin:auto; padding:32px; color:#142438; background:#fff }
+    button,input { font:inherit; padding:10px; margin:8px 0 }
+    dialog { max-width:420px; border:2px solid #142438; padding:24px }
+    dialog::backdrop { background:#0006 }
+    :focus-visible { outline:3px solid #235bb6; outline-offset:3px }
+  </style>
+</head>
+<body>
+  <header><p>AccessJourney test fixture</p></header>
+  <main>
+    <h1>Contact our team</h1>
+    <p>This synthetic fixture intentionally reveals accessibility defects after interactions.</p>
+    <button id="open">Contact us</button>
+    <dialog aria-labelledby="title">
+      <h2 id="title">Contact</h2>
+      <form novalidate>
+        <p><label for="email">Email</label><br><input id="email" type="email"></p>
+        <div id="error" role="alert"></div>
+        <button type="submit">Send</button>
+        <button type="button" id="close">Close</button>
+      </form>
+    </dialog>
+  </main>
+  <footer><p>For local testing only. No information is sent.</p></footer>
+  <script>
+    const fixed = new URLSearchParams(location.search).has('fixed');
+    const dialog = document.querySelector('dialog');
+    document.querySelector('#open').onclick = () => {
+      dialog.showModal();
+      if (!fixed) document.querySelector('input').removeAttribute('id');
+    };
+    document.querySelector('#close').onclick = () => dialog.close();
+    document.querySelector('form').onsubmit = event => {
+      event.preventDefault();
+      const image = document.createElement('img');
+      image.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+      if (fixed) image.alt = '';
+      const message = document.createElement('p');
+      message.textContent = 'Please provide an email.';
+      document.querySelector('#error').replaceChildren(image, message);
+    };
+  </script>
+</body>
+</html>

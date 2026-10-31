@@ -1,0 +1,11 @@
+{
+  "name": "Dialog and validation journey",
+  "baseURL": "http://127.0.0.1:4177",
+  "keyboard": { "tabs": 4 },
+  "steps": [
+    { "name": "Landing page", "action": "goto", "url": "/" },
+    { "name": "Open contact dialog", "action": "click", "target": { "role": "button", "name": "Contact us" } },
+    { "name": "Submit empty form", "action": "click", "target": { "role": "button", "name": "Send" } },
+    { "name": "Close dialog", "action": "press", "target": { "role": "dialog", "name": "Contact" }, "value": "Escape" }
+  ]
+}

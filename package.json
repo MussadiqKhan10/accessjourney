@@ -1,0 +1,23 @@
+{
+  "name": "accessjourney",
+  "version": "0.1.0",
+  "description": "Accessibility regression testing across real user journeys with Playwright and axe-core.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Musaddiq Khan",
+  "engines": { "node": ">=22" },
+  "bin": { "accessjourney": "src/cli.js" },
+  "exports": "./src/runner.js",
+  "files": ["src", "examples", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:integration": "node --test test/*.integration.js",
+    "demo": "node examples/demo.js",
+    "check": "node --check src/cli.js && node --check src/runner.js && node --check src/report.js && node --check src/config.js"
+  },
+  "dependencies": { "@axe-core/playwright": "4.14.0", "playwright": "1.58.2" },
+  "repository": { "type": "git", "url": "https://github.com/MussadiqKhan10/accessjourney.git" },
+  "homepage": "https://github.com/MussadiqKhan10/accessjourney#readme",
+  "bugs": { "url": "https://github.com/MussadiqKhan10/accessjourney/issues" },
+  "keywords": ["accessibility", "a11y", "playwright", "axe-core", "accessibility-testing", "wcag", "regression-testing", "user-journeys"]
+}
